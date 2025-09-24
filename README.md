@@ -25,6 +25,10 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 - As a user, I want clear error messages if I try actions I’m not authorized to perform, like booking while logged out.  
 - As a user, I want to log out securely to protect my account on shared devices.  
 
+## Entity Relationship Diagram (ERD)
+
+![Entity Relationship Diagram (ERD)](ERD.png)
+
 ## Pseudocode  
 ``` text
 // On page load:
@@ -74,3 +78,6 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 ```
 ## Wireframe
 ![Website wireframe](Wireframe.png) 
+
+## RESTful Routing Table
+![RESTful Routing Table](RRT.png) 
