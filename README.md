@@ -27,7 +27,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ## Entity Relationship Diagram (ERD)
 
-## **User**
+User
 | Field          | Type       | Options                              |
 |----------------|-----------|---------------------------------------|
 | userId         | ObjectId  | Primary Key                           |
@@ -41,7 +41,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ---
 
-## **Ride**
+Ride
 | Field             | Type       | Options                          |
 |-------------------|-----------|-----------------------------------|
 | rideId            | ObjectId  | Primary Key                       |
@@ -57,7 +57,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ---
 
-## **Booking**
+Booking
 | Field       | Type       | Options                                   |
 |-------------|-----------|--------------------------------------------|
 | bookingId   | ObjectId  | Primary Key                                |
@@ -71,7 +71,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ---
 
-## **Review**
+Review
 | Field     | Type       | Options                                   |
 |-----------|-----------|--------------------------------------------|
 | reviewId  | ObjectId  | Primary Key                                |
@@ -84,7 +84,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ---
 
-# 🔗 Relationships Table
+Relationships Table
 
 | Relationship Type | From Entity | To Entity | Description |
 |-------------------|-------------|-----------|-------------|
