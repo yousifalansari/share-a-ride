@@ -1,6 +1,8 @@
 # Share-A-Ride  
 Community Carpooling Made Easy
 
+![Share-A-Ride Logo](image.png) (Chatgpt, 2025)
+
 ## Overview  
 Share-A-Ride is a practical web application designed to help local community members share rides efficiently and securely. Drivers can create ride offers by providing key details like origin, destination, date, time, and available seats. Passengers can browse, search, and book seats on rides that fit their schedules. The platform promotes eco-friendly transportation and cost savings by facilitating simple, reliable ride sharing without complexity.
 
