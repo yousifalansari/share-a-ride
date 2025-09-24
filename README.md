@@ -71,4 +71,8 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 // On logout:
 // - Destroy session.
 // - Redirect to landing or login page.
+
+## Wireframe
+![Website wireframe](Wireframe.png) 
+
 ```
