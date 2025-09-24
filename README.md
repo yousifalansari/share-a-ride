@@ -1,7 +1,7 @@
 # Share-A-Ride  
 Community Carpooling Made Easy
 
-![Share-A-Ride Logo](image.png) (Chatgpt, 2025)
+![Share-A-Ride Logo](README-ASSETS/logo.png) (Chatgpt, 2025)
 
 ## Overview  
 Share-A-Ride is a practical web application designed to help local community members share rides efficiently and securely. Drivers can create ride offers by providing key details like origin, destination, date, time, and available seats. Passengers can browse, search, and book seats on rides that fit their schedules. The platform promotes eco-friendly transportation and cost savings by facilitating simple, reliable ride sharing without complexity.
@@ -27,7 +27,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ## Entity Relationship Diagram (ERD)
 
-![Entity Relationship Diagram (ERD)](ERD.png)
+![Entity Relationship Diagram (ERD)](README-ASSETS/ERD.png)
 
 ## Pseudocode  
 ``` text
@@ -77,7 +77,7 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 // - Redirect to landing or login page.
 ```
 ## Wireframe
-![Website wireframe](Wireframe.png) 
+![Website wireframe](README-ASSETS/Wireframe.png) 
 
 ## RESTful Routing Table
-![RESTful Routing Table](RRT.png) 
+![RESTful Routing Table](README-ASSETS/RRT.png) 
