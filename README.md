@@ -27,7 +27,72 @@ The app focuses on ease of use with clear workflows and secure session-based aut
 
 ## Entity Relationship Diagram (ERD)
 
-![Entity Relationship Diagram (ERD)](README-ASSETS/ERD.png)
+## **User**
+| Field          | Type       | Options                              |
+|----------------|-----------|---------------------------------------|
+| userId         | ObjectId  | Primary Key                           |
+| username       | String    | { required: true, unique: true }      |
+| email          | String    | { required: true, unique: true }      |
+| hashedPassword | String    | { required: true }                    |
+| name           | String    |                                       |
+| contactInfo    | String    |                                       |
+| createdAt      | DateTime  | { default: now }                      |
+| updatedAt      | DateTime  |                                       |
+
+---
+
+## **Ride**
+| Field             | Type       | Options                          |
+|-------------------|-----------|-----------------------------------|
+| rideId            | ObjectId  | Primary Key                       |
+| driverId          | ObjectId  | { ref: "User", required: true }   |
+| origin            | String    | { required: true }                |
+| destination       | String    | { required: true }                |
+| departureDateTime | DateTime  | { required: true }                |
+| seatsAvailable    | Number    | { required: true }                |
+| pricePerSeat      | Number    |                                   |
+| notes             | String    |                                   |
+| createdAt         | DateTime  | { default: now }                  |
+| updatedAt         | DateTime  |                                   |
+
+---
+
+## **Booking**
+| Field       | Type       | Options                                   |
+|-------------|-----------|--------------------------------------------|
+| bookingId   | ObjectId  | Primary Key                                |
+| rideId      | ObjectId  | { ref: "Ride", required: true }            |
+| passengerId | ObjectId  | { ref: "User", required: true }            |
+| seatsBooked | Number    | { required: true, min: 1 }                 |
+| bookingDate | DateTime  | { default: now }                           |
+| status      | String    | { enum: ["active", "canceled"], default: "active" } |
+| createdAt   | DateTime  | { default: now }                           |
+| updatedAt   | DateTime  |                                            |
+
+---
+
+## **Review**
+| Field     | Type       | Options                                   |
+|-----------|-----------|--------------------------------------------|
+| reviewId  | ObjectId  | Primary Key                                |
+| rideId    | ObjectId  | { ref: "Ride", required: true }            |
+| authorId  | ObjectId  | { ref: "User", required: true }            |
+| rating    | Number    | { required: true, min: 1, max: 5 }         |
+| comment   | String    |                                            |
+| createdAt | DateTime  | { default: now }                           |
+| updatedAt | DateTime  |                                            |
+
+---
+
+# 🔗 Relationships Table
+
+| Relationship Type | From Entity | To Entity | Description |
+|-------------------|-------------|-----------|-------------|
+| One-to-Many       | User        | Ride      | A **User** (driver) can create many **Rides**, but each Ride has exactly one driver. |
+| One-to-Many       | User        | Booking   | A **User** (passenger) can make many **Bookings**, but each Booking belongs to one passenger. |
+| One-to-Many       | User        | Review    | A **User** can write many **Reviews**, but each Review has exactly one author. |
+| One-to-Many       | Ride        | Booking   | A **Ride** can have many **Bookings**, but each Booking belongs to one Ride. |
+| One-to-Many       | Ride        | Review    | A **Ride** can have many **Reviews**, but each Review is tied to one Ride. |
 
 ## Pseudocode  
 ``` text
