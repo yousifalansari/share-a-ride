@@ -1,5 +1,4 @@
 const dotenv = require('dotenv');
-
 dotenv.config();
 require('./config/database.js');
 const express = require('express');
@@ -9,23 +8,22 @@ const app = express();
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
-const MongoStore = require("connect-mongo");
-const isSignedIn = require("./middleware/is-signed-in.js");
-const passUserToView = require("./middleware/pass-user-to-view.js");
+const MongoStore = require('connect-mongo');
+
+const isSignedIn = require('./middleware/is-signed-in.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
+const rideController = require('./controllers/ride.js'); // <--- Import from controllers folder
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
 
 // MIDDLEWARE
 
-// Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
-// Middleware for using HTTP verbs such as PUT or DELETE
 app.use(methodOverride('_method'));
-// Morgan for logging HTTP requests
 app.use(morgan('dev'));
 app.use(
   session({
@@ -39,14 +37,18 @@ app.use(
 );
 app.use(passUserToView);
 
-// PUBLIC
+// PUBLIC ROUTES
+
 app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
 app.use('/auth', authController);
 
-// PROTECTED
+// PROTECTED ROUTES
+
+// Mount rides controller for all /rides routes
+app.use('/rides', rideController); // <--- Correct mounting in middleware chain
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
