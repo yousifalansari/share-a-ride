@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ride Details</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Ride Details</h1>
+
+    <p><strong>Origin:</strong> <%= ride.origin %></p>
+    <p><strong>Destination:</strong> <%= ride.destination %></p>
+    <p><strong>Departure:</strong> <%= new Date(ride.departureDateTime).toLocaleString() %></p>
+    <p><strong>Driver:</strong> <%= ride.driverId.username %></p>
+    <p><strong>Seats Available:</strong> <%= ride.seatsAvailable %></p>
+    <p><strong>Price per seat:</strong> $<%= ride.pricePerSeat %></p>
+    <p><strong>Notes:</strong> <%= ride.notes %></p>
+
+    <a href="/rides/<%= ride._id %>/edit">Edit this Ride</a>
+
+    <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
+      <button type="submit">Delete this Ride</button>
+    </form>
+
+    <br>
+    <a href="/rides">Back to All Rides</a>
+  </body>
+</html>
