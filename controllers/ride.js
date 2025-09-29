@@ -14,6 +14,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+// Show the form to create a new ride - only signed-in users (drivers)
+router.get('/new', isSignedIn, (req, res) => {
+  res.render('ride/form.ejs');
+});
 
 module.exports = router;
