@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Available Rides</title>
+</head>
+<body>
+  <h1>Available Rides</h1>
+  <a href="/rides/new">Create a New Ride</a>
+
+  <% if (rides.length === 0) { %>
+    <p>No rides available.</p>
+  <% } else { %>
+    <ul>
+      <% rides.forEach(ride => { %>
+        <li>
+          <strong><%= ride.origin %></strong> to <strong><%= ride.destination %></strong> 
+          on <%= new Date(ride.departureDateTime).toLocaleString() %> by 
+          <em><%= ride.driverId.username %></em>
+            Seats Available: <%= ride.seatsAvailable %>
+            Price per Seat: $<%= ride.pricePerSeat %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</body>
+</html>
