@@ -6,7 +6,7 @@
     <title>Ride Details</title>
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %>
+    <%- include('../partials/_navbar') %>
 
     <h1>Ride Details</h1>
 
@@ -18,13 +18,18 @@
     <p><strong>Price per seat:</strong> $<%= ride.pricePerSeat %></p>
     <p><strong>Notes:</strong> <%= ride.notes %></p>
 
-    <a href="/rides/<%= ride._id %>/edit">Edit this Ride</a>
+    <% if (user && ride.driverId._id.toString() === user._id.toString()) { %>
+      <a href="/rides/<%= ride._id %>/edit">Edit this Ride</a>
+      <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Delete this Ride</button>
+      </form>
+    <% } else if(user) { %>
+      <a href="/bookings/new/<%= ride._id %>">Book this Ride</a>
+    <% } else { %>
+      <p><a href="/auth/sign-in">Sign in</a> to book this ride.</p>
+    <% } %>
 
-    <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
-      <button type="submit">Delete this Ride</button>
-    </form>
-
-    <br>
+    <br/>
     <a href="/rides">Back to All Rides</a>
   </body>
 </html>

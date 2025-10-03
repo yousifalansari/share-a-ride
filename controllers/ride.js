@@ -37,6 +37,16 @@ router.post('/', isSignedIn, async (req, res) => {
   }
 });
 
+// Show rides created by the signed-in user (driver's own rides)
+router.get('/my-rides', isSignedIn, async (req, res) => {
+  try {
+    const rides = await Ride.find({ driverId: req.session.user._id });
+    res.render('ride/my-rides.ejs', { rides, user: req.session.user });
+  } catch (error) {
+    res.status(500).send('Error fetching your rides');
+  }
+});
+
 // Show a single ride's details
 router.get('/:rideId', async (req, res) => {
   try {
@@ -57,7 +67,7 @@ router.get('/:rideId/edit', isSignedIn, async (req, res) => {
     if (!ride) {
       return res.status(404).send('Ride not found');
     }
-    if (ride.driverId.toString() !== req.session.user._id) {
+    if (ride.driverId.toString() !== req.session.user._id.toString()) {
       return res.status(403).send('Unauthorized');
     }
     res.render('ride/edit.ejs', { ride, user: req.session.user });
@@ -73,7 +83,7 @@ router.put('/:rideId', isSignedIn, async (req, res) => {
     if (!ride) {
       return res.status(404).send('Ride not found');
     }
-    if (ride.driverId.toString() !== req.session.user._id) {
+    if (ride.driverId.toString() !== req.session.user._id.toString()) {
       return res.status(403).send('Unauthorized');
     }
     await Ride.findByIdAndUpdate(req.params.rideId, {
@@ -97,7 +107,7 @@ router.delete('/:rideId', isSignedIn, async (req, res) => {
     if (!ride) {
       return res.status(404).send('Ride not found');
     }
-    if (ride.driverId.toString() !== req.session.user._id) {
+    if (ride.driverId.toString() !== req.session.user._id.toString()) {
       return res.status(403).send('Unauthorized');
     }
     await Ride.findByIdAndDelete(req.params.rideId);

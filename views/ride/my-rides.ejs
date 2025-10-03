@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Rides</title>
+</head>
+<body>
+  <%- include('../partials/_navbar') %>
+
+  <h1>My Rides</h1>
+
+  <% if (rides.length === 0) { %>
+    <p>You have not created any rides yet.</p>
+    <a href="/rides/new">Create your first ride</a>
+  <% } else { %>
+    <ul>
+      <% rides.forEach(ride => { %>
+        <li>
+          <strong><%= ride.origin %></strong> to <strong><%= ride.destination %></strong>,
+          Departure: <%= new Date(ride.departureDateTime).toLocaleString() %><br />
+          Seats: <%= ride.seatsAvailable %>, Price: $<%= ride.pricePerSeat %><br />
+          <a href="/rides/<%= ride._id %>">View</a> |
+          <a href="/rides/<%= ride._id %>/edit">Edit</a> |
+          <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <br />
+  <a href="/rides">Back to all rides</a>
+</body>
+</html>
