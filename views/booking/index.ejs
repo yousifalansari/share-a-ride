@@ -6,6 +6,18 @@
     <title>Your Bookings</title>
   </head>
   <body>
-
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Your Bookings</h1>
+    <ul>
+      <% bookings.forEach(booking => { %>
+        <li>
+          Ride from <%= booking.rideId.origin %> to <%= booking.rideId.destination %> 
+          on <%= new Date(booking.rideId.departureDateTime).toLocaleString() %>,
+          seats booked: <%= booking.seatsBooked %>,
+          status: <%= booking.status %>
+          <a href="/bookings/<%= booking._id %>">View</a>
+        </li>
+      <% }); %>
+    </ul>
   </body>
 </html>
