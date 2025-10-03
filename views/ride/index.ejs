@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Rides</title>
-  </head>
-  <body>
-    <%- include('../partials/_navbar.ejs') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Rides</title>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
 
     <h1>All Available Rides</h1>
     <a href="/rides/new">Create New Ride</a>
 
     <ul>
-      <% rides.forEach((ride) => { %>
-      <li>
-        Trip from <%= ride.origin %> to <%= ride.destination %> on <%= new Date(ride.departureDateTime).toLocaleString() %>
-        driven by <%= ride.driverId.username %> |
-        <a href="/rides/<%= ride._id %>">View Details</a>
-      </li>
-      <% }) %>
+      <% rides.forEach((ride)=> { %>
+        <li>
+          Trip from <%= ride.origin %> to <%= ride.destination %> on <%= new
+                Date(ride.departureDateTime).toLocaleString() %>
+                driven by <%= ride.driverId.username %> |
+                  Seats Available: <%= ride.seatsAvailable %>
+                      <% if (ride.seatsAvailable <=0) { %>
+                        <span style="color:red; font-weight:bold;">Ride is full</span>
+                        <% } %>
+                          | <a href="/rides/<%= ride._id %>">View Details</a>
+        </li>
+        <% }) %>
     </ul>
-  </body>
+
+</body>
+
 </html>

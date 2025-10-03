@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book a Ride</title>
-  </head>
-  <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Book Ride: <%= ride.origin %> to <%= ride.destination %></h1>
-    <form action="/bookings" method="POST">
-      <input type="hidden" name="rideId" value="<%= ride._id %>"/>
-      <label for="seatsBooked">Seats to Book:</label>
-      <input type="number" id="seatsBooked" name="seatsBooked" min="1" max="<%= ride.seatsAvailable %>" required />
-      <button type="submit">Book</button>
-    </form>
-    <a href="/rides/<%= ride._id %>">Back to Ride Details</a>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Ride</title>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+    <h1>Book Ride: <%= ride.origin %> to <%= ride.destination %>
+    </h1>
+
+    <% if (ride.seatsAvailable <=0) { %>
+      <p>This ride is full and cannot be booked.</p>
+      <% } else if (new Date()>= new Date(ride.departureDateTime)) { %>
+        <p>This ride has already started and cannot be booked.</p>
+        <% } else { %>
+          <form action="/bookings" method="POST">
+            <input type="hidden" name="rideId" value="<%= ride._id %>" />
+            <label for="seatsBooked">Seats to Book (Max. <%= ride.seatsAvailable %>):</label>
+            <input type="number" id="seatsBooked" name="seatsBooked" min="1" max="<%= ride.seatsAvailable %>"
+              required />
+
+            <label for="pickupLocation">Add Location</label>
+            <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Copy your location here"
+              required />
+
+            <button type="submit">Book</button>
+          </form>
+          <% } %>
+
+            <a href="/rides/<%= ride._id %>">Back to Ride Details</a>
+</body>
+
 </html>
