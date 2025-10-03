@@ -6,7 +6,7 @@
     <title>Ride Details</title>
   </head>
   <body>
-    <%- include('../partials/_navbar') %>
+    <%- include('../partials/_navbar.ejs') %>
 
     <h1>Ride Details</h1>
 
@@ -29,7 +29,9 @@
       <p><a href="/auth/sign-in">Sign in</a> to book this ride.</p>
     <% } %>
 
-    <br/>
-    <a href="/rides">Back to All Rides</a>
+    <h2>Reviews for this Ride</h2>
+    <a href="/reviews/ride/<%= ride._id %>">See all reviews</a>
+
+    <br/><a href="/rides">Back to All Rides</a>
   </body>
 </html>

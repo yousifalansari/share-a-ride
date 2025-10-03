@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews for Ride</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Reviews for Ride</h1>
+
+    <% if (reviews.length === 0) { %>
+      <p>No reviews have been written for this ride yet.</p>
+    <% } else { %>
+      <ul>
+        <% reviews.forEach(review => { %>
+          <li>
+            Rating: <%= review.rating %>/5 |
+            By: <%= review.authorId.username %><br/>
+            Comment: <%= review.comment %>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+
+    <a href="/rides/<%= reviews.length ? reviews[0].rideId._id : '' %>">Back to Ride</a>
+  </body>
+</html>
