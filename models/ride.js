@@ -33,6 +33,10 @@ const rideSchema = new mongoose.Schema({
   notes: {
     type: String,
   },
+  isDone: {
+    type: Boolean,
+    default: false,
+  }
 }, {
   timestamps: true,
 });
