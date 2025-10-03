@@ -15,7 +15,10 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
-const rideController = require('./controllers/ride.js'); // <--- Import from controllers folder
+const rideController = require('./controllers/ride.js'); 
+const bookingController = require('./controllers/booking.js');
+
+
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
@@ -44,6 +47,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authController);
+app.use('/bookings', bookingController);
 
 // PROTECTED ROUTES
 
