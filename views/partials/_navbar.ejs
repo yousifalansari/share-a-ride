@@ -1,9 +1,12 @@
 <nav>
   <a href="/">Home</a> |
   <a href="/rides">Browse Rides</a> |
+
   <% if (user) { %>
     <a href="/rides/new">Create Ride</a> |
     <a href="/rides/my-rides">My Rides</a> |
+    <a href="/bookings">My Bookings</a> |
+    <a href="/reviews">My Reviews</a> |
     <a href="/auth/sign-out">Sign Out</a>
   <% } else { %>
     <a href="/auth/sign-in">Sign In</a> |
