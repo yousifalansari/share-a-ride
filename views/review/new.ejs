@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Review</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Write a Review</h1>
+    <form action="/reviews" method="POST">
+      <input type="hidden" name="rideId" value="<%= ride._id %>"/>
+      <label for="rating">Rating (1–5):</label>
+      <input type="number" id="rating" name="rating" min="1" max="5" required />
+      <br/>
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment"></textarea>
+      <br/>
+      <button type="submit">Submit Review</button>
+    </form>
+    <a href="/rides/<%= ride._id %>">Back to Ride</a>
+  </body>
+</html>
