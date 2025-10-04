@@ -30,6 +30,7 @@ router.post('/', isSignedIn, async (req, res) => {
       seatsAvailable: req.body.seatsAvailable,
       pricePerSeat: req.body.pricePerSeat,
       notes: req.body.notes,
+      isDone: false // default added here
     });
     res.redirect('/rides');
   } catch (error) {
@@ -51,9 +52,7 @@ router.get('/my-rides', isSignedIn, async (req, res) => {
 router.get('/:rideId', async (req, res) => {
   try {
     const ride = await Ride.findById(req.params.rideId).populate('driverId', 'username');
-    if (!ride) {
-      return res.status(404).send('Ride not found');
-    }
+    if (!ride) return res.status(404).send('Ride not found');
     res.render('ride/show.ejs', { ride, user: req.session.user });
   } catch (error) {
     res.status(500).send('Error loading ride');
@@ -64,12 +63,8 @@ router.get('/:rideId', async (req, res) => {
 router.get('/:rideId/edit', isSignedIn, async (req, res) => {
   try {
     const ride = await Ride.findById(req.params.rideId);
-    if (!ride) {
-      return res.status(404).send('Ride not found');
-    }
-    if (ride.driverId.toString() !== req.session.user._id.toString()) {
-      return res.status(403).send('Unauthorized');
-    }
+    if (!ride) return res.status(404).send('Ride not found');
+    if (ride.driverId.toString() !== req.session.user._id.toString()) return res.status(403).send('Unauthorized');
     res.render('ride/edit.ejs', { ride, user: req.session.user });
   } catch (error) {
     res.status(500).send('Error loading ride');
@@ -80,12 +75,8 @@ router.get('/:rideId/edit', isSignedIn, async (req, res) => {
 router.put('/:rideId', isSignedIn, async (req, res) => {
   try {
     const ride = await Ride.findById(req.params.rideId);
-    if (!ride) {
-      return res.status(404).send('Ride not found');
-    }
-    if (ride.driverId.toString() !== req.session.user._id.toString()) {
-      return res.status(403).send('Unauthorized');
-    }
+    if (!ride) return res.status(404).send('Ride not found');
+    if (ride.driverId.toString() !== req.session.user._id.toString()) return res.status(403).send('Unauthorized');
     await Ride.findByIdAndUpdate(req.params.rideId, {
       origin: req.body.origin,
       destination: req.body.destination,
@@ -104,16 +95,26 @@ router.put('/:rideId', isSignedIn, async (req, res) => {
 router.delete('/:rideId', isSignedIn, async (req, res) => {
   try {
     const ride = await Ride.findById(req.params.rideId);
-    if (!ride) {
-      return res.status(404).send('Ride not found');
-    }
-    if (ride.driverId.toString() !== req.session.user._id.toString()) {
-      return res.status(403).send('Unauthorized');
-    }
+    if (!ride) return res.status(404).send('Ride not found');
+    if (ride.driverId.toString() !== req.session.user._id.toString()) return res.status(403).send('Unauthorized');
     await Ride.findByIdAndDelete(req.params.rideId);
     res.redirect('/rides');
   } catch (error) {
     res.status(400).send('Failed to delete ride');
+  }
+});
+
+// New route to mark ride as done - only driver allowed
+router.put('/:rideId/mark-done', isSignedIn, async (req, res) => {
+  try {
+    const ride = await Ride.findById(req.params.rideId);
+    if (!ride) return res.status(404).send('Ride not found');
+    if (ride.driverId.toString() !== req.session.user._id.toString()) return res.status(403).send('Unauthorized');
+    ride.isDone = true;
+    await ride.save();
+    res.redirect('/rides/my-rides');
+  } catch (error) {
+    res.status(400).send('Failed to mark ride as done');
   }
 });
 

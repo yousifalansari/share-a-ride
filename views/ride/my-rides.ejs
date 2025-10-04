@@ -5,7 +5,7 @@
   <title>My Rides</title>
 </head>
 <body>
-  <%- include('../partials/_navbar') %>
+  <%- include('../partials/_navbar.ejs') %>
 
   <h1>My Rides</h1>
 
@@ -19,6 +19,15 @@
           <strong><%= ride.origin %></strong> to <strong><%= ride.destination %></strong>,
           Departure: <%= new Date(ride.departureDateTime).toLocaleString() %><br />
           Seats: <%= ride.seatsAvailable %>, Price: $<%= ride.pricePerSeat %><br />
+
+          <% if (ride.isDone) { %>
+            <strong style="color:green;">DONE</strong><br />
+          <% } else { %>
+            <form action="/rides/<%= ride._id %>/mark-done?_method=PUT" method="POST" style="display:inline;">
+              <button type="submit">Mark as Done</button>
+            </form><br/>
+          <% } %>
+
           <a href="/rides/<%= ride._id %>">View</a> |
           <a href="/rides/<%= ride._id %>/edit">Edit</a> |
           <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
