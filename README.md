@@ -197,7 +197,42 @@ Share-A-Ride is a Node.js web application built with Express and MongoDB. It ena
 ![Website wireframe](README-ASSETS/Wireframe.png) 
 
 ## RESTful Routing Table
-![RESTful Routing Table](README-ASSETS/RRT.png) 
+# RESTful Routing Table
+
+| HTTP Method | Path/Endpoint               | CRUD Operation | Route Name         | Description                                                    |
+|-------------|-----------------------------|----------------|--------------------|----------------------------------------------------------------|
+| GET         | /auth/sign-up               | Read (Form)    | signUpForm         | Show sign-up form to create a new user                         |
+| POST        | /auth/sign-up               | Create         | createUser         | Handle user registration and start session                     |
+| GET         | /auth/sign-in               | Read (Form)    | signInForm         | Show sign-in form                                              |
+| POST        | /auth/sign-in               | Read (Authenticate) | loginUser          | Authenticate user and start session                            |
+| GET         | /auth/sign-out              | Delete (Session) | logoutUser         | Log user out and destroy session                               |
+| GET         | /rides                      | Read           | listRides          | List all available rides                                       |
+| GET         | /rides/new                  | Create (Form)  | newRideForm        | Show form to create a new ride (drivers only)                 |
+| POST        | /rides                      | Create         | createRide         | Handle new ride creation                                       |
+| GET         | /rides/my-rides             | Read           | myRides            | List rides created by signed-in driver                        |
+| GET         | /rides/:rideId              | Read           | showRide           | Show details of a specific ride                               |
+| GET         | /rides/:rideId/edit         | Update (Form)  | editRideForm       | Show edit form for ride (driver only)                         |
+| PUT         | /rides/:rideId              | Update         | updateRide         | Update ride details (driver only)                             |
+| DELETE      | /rides/:rideId              | Delete         | deleteRide         | Delete a ride (driver only)                                   |
+| PUT         | /rides/:rideId/mark-done    | Update         | markRideDone       | Mark ride as completed (driver only)                          |
+| GET         | /bookings                  | Read           | listBookings       | List bookings of signed-in user                               |
+| GET         | /bookings/new/:rideId       | Create (Form)  | newBookingForm     | Show booking form for a specific ride                        |
+| POST        | /bookings                  | Create         | createBooking      | Create a new booking for a ride                              |
+| GET         | /bookings/:bookingId        | Read           | showBooking        | Show details of a booking                                    |
+| GET         | /bookings/:bookingId/edit   | Update (Form)  | editBookingForm    | Show form to edit an existing booking                       |
+| PUT         | /bookings/:bookingId        | Update         | updateBooking      | Update booking details                                       |
+| DELETE      | /bookings/:bookingId        | Delete         | deleteBooking      | Cancel a booking                                            |
+| GET         | /reviews                    | Read           | listReviews        | List user's reviews and rides to review                     |
+| GET         | /reviews/ride/:rideId       | Read           | rideReviews        | Show reviews of a specific ride                             |
+| GET         | /reviews/new/:rideId        | Create (Form)  | newReviewForm      | Show form to add a new review for a ride                   |
+| POST        | /reviews                    | Create         | createReview       | Create a new review                                        |
+| GET         | /reviews/:reviewId          | Read           | showReview         | Show specific review details                               |
+| GET         | /reviews/:reviewId/edit     | Update (Form)  | editReviewForm     | Show form to edit a review                                 |
+| PUT         | /reviews/:reviewId          | Update         | updateReview       | Update a review                                           |
+| DELETE      | /reviews/:reviewId          | Delete         | deleteReview       | Delete a review                                         |
+| GET         | /                           | Read           | home               | Show landing page                                        |
+
+
 
 ## Technologies Used
 
