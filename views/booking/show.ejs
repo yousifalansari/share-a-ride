@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Booking Details</title>
-  </head>
-  <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Booking Details</h1>
-    <p>Ride: <%= booking.rideId.origin %> to <%= booking.rideId.destination %></p>
-    <p>Date: <%= new Date(booking.rideId.departureDateTime).toLocaleString() %></p>
-    <p>Seats Booked: <%= booking.seatsBooked %></p>
-    <p>Status: <%= booking.status %></p>
-    <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
-      <button type="submit">Cancel Booking</button>
-    </form>
-    <a href="/bookings">Back to Bookings</a>
-  </body>
-</html>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Details</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <%- include('../partials/_navbar.ejs') %>
+      <h1>Booking Details</h1>
+      <p>Ride: <%= booking.rideId.origin %> to <%= booking.rideId.destination %>
+      </p>
+      <p>Date: <%= new Date(booking.rideId.departureDateTime).toLocaleString() %>
+      </p>
+      <p>Seats Booked: <%= booking.seatsBooked %>
+      </p>
+      <p>Status: <%= booking.status %>
+      </p>
+      <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
+        <button type="submit">Cancel Booking</button>
+      </form>
+      <a href="/bookings" class="btn-link">Back to Bookings</a>
+  </div>
+</body>
+
+</html>

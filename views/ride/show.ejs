@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ride Details</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Details</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
     <%- include('../partials/_navbar.ejs') %>
 
     <h1>Ride Details</h1>
 
-    <p><strong>Origin:</strong> <%= ride.origin %></p>
-    <p><strong>Destination:</strong> <%= ride.destination %></p>
-    <p><strong>Departure:</strong> <%= new Date(ride.departureDateTime).toLocaleString() %></p>
-    <p><strong>Driver:</strong> <%= ride.driverId.username %></p>
-    <p><strong>Seats Available:</strong> <%= ride.seatsAvailable %></p>
-    <p><strong>Price per seat:</strong> $<%= ride.pricePerSeat %></p>
-    <p><strong>Notes:</strong> <%= ride.notes %></p>
+    <p><strong>Origin:</strong>
+      <%= ride.origin %>
+    </p>
+    <p><strong>Destination:</strong>
+      <%= ride.destination %>
+    </p>
+    <p><strong>Departure:</strong>
+      <%= new Date(ride.departureDateTime).toLocaleString() %>
+    </p>
+    <p><strong>Driver:</strong>
+      <%= ride.driverId.username %>
+    </p>
+    <p><strong>Seats Available:</strong>
+      <%= ride.seatsAvailable %>
+    </p>
+    <p><strong>Price per seat:</strong> $<%= ride.pricePerSeat %>
+    </p>
+    <p><strong>Notes:</strong>
+      <%= ride.notes %>
+    </p>
 
     <% if (user && ride.driverId._id.toString() === user._id.toString()) { %>
-      <a href="/rides/<%= ride._id %>/edit">Edit this Ride</a>
+      <a href="/rides/<%= ride._id %>/edit" class="btn-link">Edit this Ride</a>
       <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
         <button type="submit">Delete this Ride</button>
       </form>
-    <% } else if(user) { %>
-      <a href="/bookings/new/<%= ride._id %>">Book this Ride</a>
+    <% } else if (user) { %>
+      <a href="/bookings/new/<%= ride._id %>" class="btn-link">Book this Ride</a>
     <% } else { %>
-      <p><a href="/auth/sign-in">Sign in</a> to book this ride.</p>
+      <p><a href="/auth/sign-in" class="btn-link">Sign in</a> to book this ride.</p>
     <% } %>
 
     <h2>Reviews for this Ride</h2>
-    <a href="/reviews/ride/<%= ride._id %>">See all reviews</a>
+    <a href="/reviews/ride/<%= ride._id %>" class="btn-link">See all reviews</a>
 
-    <br/><a href="/rides">Back to All Rides</a>
-  </body>
+    <a href="/rides/my-rides" class="btn-link">Back to My Rides</a>
+  </div>
+</body>
+
 </html>

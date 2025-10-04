@@ -19,6 +19,7 @@ const rideController = require('./controllers/ride.js');
 const bookingController = require('./controllers/booking.js');
 const reviewController = require('./controllers/review.js');
 
+app.use(express.static('public'));
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';

@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
+    <div class="container">
     <%- include('../partials/_navbar.ejs') %>
     <h1>Sign In!</h1>
     <form action="/auth/sign-in" method="POST">
@@ -17,5 +19,6 @@
 
       <button type="submit">Sign in</button>
     </form>
+    </div>
   </body>
 </html>

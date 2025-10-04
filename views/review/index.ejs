@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Reviews</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Reviews</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1>My Reviews</h1>
+      <h1>My Reviews</h1>
 
-    <% if (reviews.length === 0) { %>
-      <p>You have not written any reviews yet.</p>
-    <% } else { %>
-      <ul>
-        <% reviews.forEach(review => { %>
-          <li>
-            Ride: <%= review.rideId.origin %> to <%= review.rideId.destination %> |
-            Driver: <%= review.rideId.driverId.username %> |
-            Rating: <%= review.rating %>/5 |
-            <a href="/reviews/<%= review._id %>">Details</a>
-          </li>
-        <% }); %>
-      </ul>
-    <% } %>
+      <% if (reviews.length===0) { %>
+        <p>You have not written any reviews yet.</p>
+        <% } else { %>
+          <ul>
+            <% reviews.forEach(review=> { %>
+              <li>
+                Ride: <%= review.rideId.origin %> to <%= review.rideId.destination %> |
+                    Driver: <%= review.rideId.driverId.username %> |
+                      Rating: <%= review.rating %>/5 |
+                        <a href="/reviews/<%= review._id %>">Details</a>
+              </li>
+              <% }); %>
+          </ul>
+          <% } %>
 
-    <h2>Rides You Can Review</h2>
+            <h2>Rides You Can Review</h2>
 
-    <% if (!ridesToReview || ridesToReview.length === 0) { %>
-      <p>You have no rides to review at this time.</p>
-    <% } else { %>
-      <ul>
-        <% ridesToReview.forEach(ride => { %>
-          <li>
-            Ride: <%= ride.origin %> to <%= ride.destination %> |
-            Driver: <%= ride.driverId.username %> |
-            <a href="/reviews/new/<%= ride._id %>">Add Review</a>
-          </li>
-        <% }); %>
-      </ul>
-    <% } %>
+            <% if (!ridesToReview || ridesToReview.length===0) { %>
+              <p>You have no rides to review at this time.</p>
+              <% } else { %>
+                <ul>
+                  <% ridesToReview.forEach(ride=> { %>
+                    <li>
+                      Ride: <%= ride.origin %> to <%= ride.destination %> |
+                          Driver: <%= ride.driverId.username %> |
+                            <a href="/reviews/new/<%= ride._id %>">Add Review</a>
+                    </li>
+                    <% }); %>
+                </ul>
+                <% } %>
+  </div>
+</body>
 
-  </body>
 </html>

@@ -1,0 +1,409 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: #f7f1e1;
+  color: #3c5a40;
+  line-height: 27px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  font-size: 15px;
+}
+
+/* Container - wraps most page content */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px 32px;
+  background-color: #fff8ef;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(60, 90, 64, 0.15);
+  text-align: center;
+  letter-spacing: 0.8px;
+  word-spacing: 2.5px;
+  box-sizing: border-box;
+
+  /* Flex layout for inner content centering */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Maintain your current navbar styles, so not overwritten here */
+
+/* Headings */
+h1, h2, h3 {
+  color: #3c5a40;
+  margin: 0 0 14px 0;
+  letter-spacing: 1.2px;
+  word-spacing: 4px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Paragraphs and text */
+p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  word-spacing: 3px;
+  max-width: 650px;
+  text-align: center;
+}
+
+/* Form styling aligned and centered */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+}
+
+/* Labels */
+label {
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #3c5a40;
+  font-size: 13px;
+  align-self: flex-start;
+  letter-spacing: 0.7px;
+  word-spacing: 1.5px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="datetime-local"],
+textarea,
+select {
+  padding: 11px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1.5px solid #a89e85;
+  background-color: #faf5ec;
+  color: #4a5e3a;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  letter-spacing: 0.7px;
+  word-spacing: 2px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #38522c;
+  outline: none;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+li {
+  padding: 14px 20px;
+  background-color: #f6f1e4;
+  border-radius: 12px;
+  box-shadow: 1px 3px 6px rgba(58, 80, 45, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #3c5a40;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  word-spacing: 2px;
+  box-sizing: border-box;
+}
+
+li a {
+  color: #496a3f;
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 12px;
+  text-decoration: none;
+  letter-spacing: 0.9px;
+  word-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+li a:hover, li a:focus {
+  color: #38522c;
+  outline: none;
+}
+
+/* Link buttons */
+a.btn-link {
+  display: inline-block;
+  color: #496a3f;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0 8px;
+  padding: 8px 18px;
+  text-decoration: none;
+  border: 2px solid #496a3f;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  letter-spacing: 0.9px;
+  word-spacing: 2.5px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+a.btn-link:hover,
+a.btn-link:focus {
+  background-color: #496a3f;
+  color: #f7f1e1;
+  outline: none;
+}
+
+/* Buttons */
+button, input[type="submit"], input[type="button"] {
+  background-color: #496a3f;
+  color: #fcf6e8;
+  border: none;
+  padding: 12px 28px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 2px 2px 6px rgba(73, 106, 63, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  letter-spacing: 1px;
+  word-spacing: 2.5px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+button:hover, button:focus,
+input[type="submit"]:hover, input[type="submit"]:focus,
+input[type="button"]:hover, input[type="button"]:focus {
+  background-color: #38522c;
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* Logo */
+.home-logo {
+  display: block;
+  max-width: 280px;
+  max-height: 280px;
+  object-fit: contain;
+  margin: 36px auto;
+  box-sizing: border-box;
+}
+
+/* Welcome and Auth Links */
+.welcome-message {
+  font-size: 20px;
+  font-weight: 600;
+  color: #3c5a40;
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.auth-links a {
+  color: #496a3f;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 2px solid #496a3f;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 0.9px;
+  word-spacing: 3px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.auth-links a:hover,
+.auth-links a:focus {
+  background-color: #496a3f;
+  color: #f7f1e1;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .container {
+    max-width: 95vw;
+    margin: 16px;
+    padding: 24px;
+  }
+
+  nav {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p, li, label, input, button {
+    font-size: 13px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
+  ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  li {
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  .auth-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .auth-links a {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+}
+
+nav {
+  width: 100%;
+  background-color: #496a3f; /* deep classic green */
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;           /* smaller gap between nav items */
+  box-shadow: 0 3px 8px rgba(73, 106, 63, 0.45);
+  flex-shrink: 0;
+  flex-wrap: nowrap;  /* no wrapping, keep one line */
+  letter-spacing: 1px;
+  word-spacing: 1.5px; /* slightly tighter word spacing */
+  white-space: nowrap;
+}
+
+nav a {
+  color: #f7f1e1;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 6px 10px;  /* reduced padding */
+  border-radius: 8px;
+  background-color: #496a3f;
+  transition: background-color 0.3s ease, color 0.4s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+nav a:hover, nav a:focus {
+  color: #a99e80;
+  background-color: rgba(169, 158, 128, 0.25);
+  outline: none;
+}
+
+.rides-list {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rides-list li {
+  background-color: #fff8ef;
+  padding: 20px 28px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(60, 90, 64, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ride-details {
+  flex: 2;
+  font-size: 15px;
+  color: #3c5a40;
+  text-align: left;
+  margin-left: 60px; /* ✅ pushes ride info right */
+}
+
+.mark-done-form {
+  margin-top: 20px;
+  margin-left: -70px; /* ✅ slightly indents Mark as Done */
+}
+
+.mark-done-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #3c5a40;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mark-done-btn:hover {
+  background: #2e4532;
+}
+
+.ride-actions {
+  flex: 0 0 120px; /* ✅ fixed column for right buttons */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}

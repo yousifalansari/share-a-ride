@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-<%- include('partials/_navbar.ejs') %>
-<% if (user) { %>
-<h1>Welcome to Share-A-Ride, <%= user.username %>!</h1>
-<p>
-  <a href="/auth/sign-out">Sign out</a>
-</p>
-<% } else { %>
-<h1>Welcome to Share-A-ride, guest.</h1>
-<p>
-  <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">Sign in</a>.
-</p>
-<% } %>
 
+<body>
+  <div class="container">
+    <%- include('partials/_navbar.ejs') %>
+      <% if (user) { %>
+        <h1>Welcome to Share-A-Ride, <%= user.username %>!</h1>
+        <p class="auth-links">
+          <a href="/auth/sign-out">Sign out</a>
+        </p>
+        <% } else { %>
+          <h1>Welcome to Share-A-ride, Guest.</h1>
+          <p class="auth-links">
+            <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">Sign in</a>.
+          </p>
+          <% } %>
+          <img src="/logo.png" alt="Share-A-Ride Logo" class="home-logo" />
+  </div>
 </body>
+
 </html>

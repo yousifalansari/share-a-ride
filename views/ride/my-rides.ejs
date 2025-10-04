@@ -1,44 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Rides</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-  <%- include('../partials/_navbar.ejs') %>
+  <div class="container">
+    <%- include('../partials/_navbar.ejs') %>
 
-  <h1>My Rides</h1>
+      <h1>My Rides</h1>
 
-  <% if (rides.length === 0) { %>
-    <p>You have not created any rides yet.</p>
-    <a href="/rides/new">Create your first ride</a>
-  <% } else { %>
-    <ul>
-      <% rides.forEach(ride => { %>
-        <li>
-          <strong><%= ride.origin %></strong> to <strong><%= ride.destination %></strong>,
-          Departure: <%= new Date(ride.departureDateTime).toLocaleString() %><br />
-          Seats: <%= ride.seatsAvailable %>, Price: $<%= ride.pricePerSeat %><br />
+      <% if (rides.length===0) { %>
+        <p>You have not created any rides yet.</p>
+        <a href="/rides/new" class="btn-link">Create your first ride</a>
+        <% } else { %>
+          <ul class="rides-list">
+            <% rides.forEach(ride=> { %>
+              <li>
+                <div class="ride-details">
+                  <strong>
+                    <%= ride.origin %>
+                  </strong> to <strong>
+                    <%= ride.destination %>
+                  </strong><br>
+                  Departure: <%= new Date(ride.departureDateTime).toLocaleString() %><br>
+                    Seats: <%= ride.seatsAvailable %>, Price: $<%= ride.pricePerSeat %><br>
 
-          <% if (ride.isDone) { %>
-            <strong style="color:green;">DONE</strong><br />
-          <% } else { %>
-            <form action="/rides/<%= ride._id %>/mark-done?_method=PUT" method="POST" style="display:inline;">
-              <button type="submit">Mark as Done</button>
-            </form><br/>
+                        <% if (!ride.isDone) { %>
+                          <form action="/rides/<%= ride._id %>/mark-done?_method=PUT" method="POST"
+                            class="mark-done-form">
+                            <button type="submit" class="btn-link">Mark as Done</button>
+                          </form>
+                          <% } else { %>
+                            <strong style="color: green;">DONE</strong>
+                            <% } %>
+                </div>
+
+                <div class="ride-actions">
+                  <a href="/rides/<%= ride._id %>" class="btn-link">View</a>
+                  <a href="/rides/<%= ride._id %>/edit" class="btn-link">Edit</a>
+                  <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn-link">Delete</button>
+                  </form>
+                </div>
+              </li>
+              <% }); %>
+          </ul>
           <% } %>
 
-          <a href="/rides/<%= ride._id %>">View</a> |
-          <a href="/rides/<%= ride._id %>/edit">Edit</a> |
-          <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" style="display:inline;">
-            <button type="submit">Delete</button>
-          </form>
-        </li>
-      <% }); %>
-    </ul>
-  <% } %>
-
-  <br />
-  <a href="/rides">Back to all rides</a>
+            <br />
+            <a href="/rides" class="btn-link">Back to all rides</a>
+  </div>
 </body>
+
 </html>

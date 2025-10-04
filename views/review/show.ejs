@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Review Details</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Details</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="container">
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Review Details</h1>
-    <p>Ride: <%= review.rideId.origin %> to <%= review.rideId.destination %></p>
-    <p>Rating: <%= review.rating %>/5</p>
-    <p>Review: <%= review.comment %></p>
-    <p>By: <%= review.authorId.username %></p>
-    <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete Review</button>
-    </form>
-    <a href="/reviews/<%= review._id %>/edit">Edit Review</a>
-    <a href="/reviews">Back to Reviews</a>
-  </body>
+      <h1>Review Details</h1>
+      <p>Ride: <%= review.rideId.origin %> to <%= review.rideId.destination %>
+      </p>
+      <p>Rating: <%= review.rating %>/5</p>
+      <p>Review: <%= review.comment %>
+      </p>
+      <p>By: <%= review.authorId.username %>
+      </p>
+      <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Review</button>
+      </form>
+      <a href="/reviews/<%= review._id %>/edit" class="btn-link">Edit Review</a>
+      <a href="/reviews" class="btn-link">Back to Reviews</a>
+  </div>
+</body>
+
 </html>

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Bookings</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Bookings</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
     <%- include('../partials/_navbar.ejs') %>
     <h1>Your Bookings</h1>
-    <ul>
+    <ul class="bookings-list">
       <% bookings.forEach(booking => { %>
         <li>
-          Ride from <%= booking.rideId.origin %> to <%= booking.rideId.destination %> 
+          Ride from <%= booking.rideId.origin %> to <%= booking.rideId.destination %>
           on <%= new Date(booking.rideId.departureDateTime).toLocaleString() %>,
           seats booked: <%= booking.seatsBooked %>,
           status: <%= booking.status %>
-          <a href="/bookings/<%= booking._id %>">View</a>
+          <a href="/bookings/<%= booking._id %>" class="btn-link">View</a>
         </li>
       <% }); %>
     </ul>
-  </body>
+  </div>
+</body>
 </html>
