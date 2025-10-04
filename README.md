@@ -194,10 +194,10 @@ Share-A-Ride is a Node.js web application built with Express and MongoDB. It ena
 // Secure session-based routes.
 ```
 ## Wireframe
-![Website wireframe](README-- ASSETS/Wireframe.png) 
+![Website wireframe](README-ASSETS/Wireframe.png) 
 
 ## RESTful Routing Table
-![RESTful Routing Table](README-- ASSETS/RRT.png) 
+![RESTful Routing Table](README-ASSETS/RRT.png) 
 
 ## Technologies Used
 
