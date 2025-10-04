@@ -1,7 +1,7 @@
 # Share-A-Ride  
-Community Carpooling Made E- asy
+Community Carpooling Made Easy
 
-![Share-A-Ride Logo](README-- ASSETS/logo.png) (Chatgpt, 2025)
+![Share-A-Ride Logo](README-ASSETS/logo.png) (Chatgpt, 2025)
 
 ## Deployed Link
 - Coming Soon!
