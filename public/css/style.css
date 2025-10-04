@@ -33,7 +33,6 @@ body {
   gap: 20px;
 }
 
-/* Maintain your current navbar styles, so not overwritten here */
 
 /* Headings */
 h1, h2, h3 {
@@ -318,17 +317,17 @@ input[type="button"]:hover, input[type="button"]:focus {
 
 nav {
   width: 100%;
-  background-color: #496a3f; /* deep classic green */
+  background-color: #496a3f; 
   padding: 20px 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;           /* smaller gap between nav items */
+  gap: 6px;           
   box-shadow: 0 3px 8px rgba(73, 106, 63, 0.45);
   flex-shrink: 0;
-  flex-wrap: nowrap;  /* no wrapping, keep one line */
+  flex-wrap: nowrap;  
   letter-spacing: 1px;
-  word-spacing: 1.5px; /* slightly tighter word spacing */
+  word-spacing: 1.5px; 
   white-space: nowrap;
 }
 
@@ -337,7 +336,7 @@ nav a {
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
-  padding: 6px 10px;  /* reduced padding */
+  padding: 6px 10px;  
   border-radius: 8px;
   background-color: #496a3f;
   transition: background-color 0.3s ease, color 0.4s ease;
@@ -378,12 +377,12 @@ nav a:hover, nav a:focus {
   font-size: 15px;
   color: #3c5a40;
   text-align: left;
-  margin-left: 60px; /* ✅ pushes ride info right */
+  margin-left: 60px; 
 }
 
 .mark-done-form {
   margin-top: 20px;
-  margin-left: -70px; /* ✅ slightly indents Mark as Done */
+  margin-left: -70px; 
 }
 
 .mark-done-btn {
@@ -401,7 +400,7 @@ nav a:hover, nav a:focus {
 }
 
 .ride-actions {
-  flex: 0 0 120px; /* ✅ fixed column for right buttons */
+  flex: 0 0 120px; 
   display: flex;
   flex-direction: column;
   align-items: stretch;

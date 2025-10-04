@@ -19,12 +19,16 @@ const rideController = require('./controllers/ride.js');
 const bookingController = require('./controllers/booking.js');
 const reviewController = require('./controllers/review.js');
 
-app.use(express.static('public'));
+app.use(express.static('public')); //for css and logo loading on server on browser
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
 
 // MIDDLEWARE
+app.use('/auth', authController);
+app.use('/bookings', bookingController);
+app.use('/reviews', reviewController);
+app.use('/rides', rideController); 
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -47,14 +51,6 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-app.use('/auth', authController);
-app.use('/bookings', bookingController);
-app.use('/reviews', reviewController);
-
-// PROTECTED ROUTES
-
-// Mount rides controller for all /rides routes
-app.use('/rides', rideController); // 
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
