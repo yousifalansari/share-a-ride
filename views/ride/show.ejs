@@ -34,6 +34,7 @@
     <p><strong>Notes:</strong>
       <%= ride.notes %>
     </p>
+    <p><strong>*Payment in cash*</strong></p>
 
     <% if (user && ride.driverId._id.toString() === user._id.toString()) { %>
       <a href="/rides/<%= ride._id %>/edit" class="btn-link">Edit this Ride</a>
